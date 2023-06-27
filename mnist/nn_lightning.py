@@ -150,6 +150,6 @@ torch.manual_seed(1)
 
 mnist_dm = MnistDataModule()
 mnistclassifier = MultiLayerPerceptron()
-trainer = pl.Trainer(max_epochs=10)
+trainer = pl.Trainer(max_epochs=20)
 
 trainer.fit(mnistclassifier, mnist_dm)
