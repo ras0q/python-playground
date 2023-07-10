@@ -27,8 +27,7 @@ class IceModel(pl.LightningModule):
 
     def configure_optimizers(self):
         optimizer = optim.Adam(self.encoder.parameters(), lr=self.lr)
-        lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1)
-        return [optimizer], [lr_scheduler]
+        return optimizer
 
     def training_step(self, batch: List[torch.Tensor], batch_idx: int) -> torch.Tensor:
         x, y = batch
