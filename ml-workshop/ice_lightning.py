@@ -93,7 +93,7 @@ class DataModule(pl.LightningDataModule):
             torch.tensor(train_x, dtype=torch.float32),
             torch.tensor(train_y, dtype=torch.float32),
         )
-        val_size = int(len(train_val) * 0.3)
+        val_size = int(len(train_val) * 0.1)
         self.train, self.val = random_split(
             train_val,
             [len(train_val) - val_size, val_size],
@@ -108,16 +108,23 @@ class DataModule(pl.LightningDataModule):
             shuffle=True,
             num_workers=self.num_workers,
             drop_last=True,
+            pin_memory=True,
         )
 
     def val_dataloader(self) -> EVAL_DATALOADERS:
         return DataLoader(
-            self.val, batch_size=self.batch_size, num_workers=self.num_workers
+            self.val,
+            batch_size=self.batch_size,
+            num_workers=self.num_workers,
+            pin_memory=True,
         )
 
     def predict_dataloader(self) -> EVAL_DATALOADERS:
         return DataLoader(
-            self.test, batch_size=self.batch_size, num_workers=self.num_workers
+            self.test,
+            batch_size=self.batch_size,
+            num_workers=self.num_workers,
+            pin_memory=True,
         )
 
 
@@ -134,7 +141,7 @@ if __name__ == "__main__":
         ),
         lr=0.001,
     )
-    dm = DataModule(batch_size=32, num_workers=4)
+    dm = DataModule(batch_size=32, num_workers=2)
 
     trainer = pl.Trainer(max_epochs=200, log_every_n_steps=10, devices=1)
     trainer.fit(model, datamodule=dm)
