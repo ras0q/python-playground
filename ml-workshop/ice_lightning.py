@@ -136,7 +136,7 @@ if __name__ == "__main__":
     )
     dm = DataModule(batch_size=32, num_workers=4)
 
-    trainer = pl.Trainer(max_epochs=20, log_every_n_steps=35)
+    trainer = pl.Trainer(max_epochs=20, log_every_n_steps=1)
     trainer.fit(model, datamodule=dm)
 
     preds = trainer.predict(model, datamodule=dm)
