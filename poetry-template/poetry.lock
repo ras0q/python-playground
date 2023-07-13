@@ -229,6 +229,20 @@ files = [
 ]
 
 [[package]]
+name = "pyproject-flake8"
+version = "6.0.0.post1"
+description = "pyproject-flake8 (`pflake8`), a monkey patching wrapper to connect flake8 with pyproject.toml configuration"
+optional = false
+python-versions = ">=3.8.1"
+files = [
+    {file = "pyproject-flake8-6.0.0.post1.tar.gz", hash = "sha256:d43421caca0ef8a672874405fe63c722b0333e3c22c41648c6df60f21bab2b6b"},
+    {file = "pyproject_flake8-6.0.0.post1-py3-none-any.whl", hash = "sha256:bdc7ca9b967b9724983903489b8943b72c668178fb69f03e8774ec74f6a13782"},
+]
+
+[package.dependencies]
+flake8 = "6.0.0"
+
+[[package]]
 name = "typing-extensions"
 version = "4.7.1"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -242,4 +256,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "295d10daa49e2e5dfd2ae56a2e495c5091a3260b7c18ba52866fb643c0d5c3a1"
+content-hash = "c2ddd1873196503017250fb6207294a27bf37dcab62458b19ded95f255faced3"
